@@ -1,0 +1,6 @@
+En la asignatura de Studium de teoría de Programación II, en el Tema 1 - Tipos Estructurados No Homogéneos, 
+hay un pdf llamado “Enunciados ejercicios adicionales”.
+Hay también un zip con parte del código para el primero de los ejercicios “Plantilla para el ejercicio nº 1 de Enunciados ejercicios
+adicionales”.
+
+Dentro del código que se aporta, la función llamada “cargarRegistrosAleatorios “, puede servir de ayuda para la generación de datos aleatorios.

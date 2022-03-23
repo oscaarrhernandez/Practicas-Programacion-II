@@ -6,11 +6,15 @@
 #
 
 OBJS = mainVector.o vectorAux.o
+SOURCES = mainVector.c vectorAux.c
+HEADERS = vectorAux.h
 CC = gcc
 CTAGS = -c -g -DDEBUG
 
+all : vectores vectores.tar clean
+
 vectores : $(OBJS)
-  $(CC) $(OBJS) -o vectores
+	$(CC) $(OBJS) -o vectores
 
 mainVector.o : mainVector.c vectorAux.h  
 	$(CC) $(CTAGS) mainVector.c
@@ -18,7 +22,10 @@ mainVector.o : mainVector.c vectorAux.h
 vectorAux.o : vectorAux.c vectorAux.h
 	$(CC) $(CTAGS) vectorAux.c
 
-clean:
+vectores.tar : $(SOURCES) $(HEADERS) makefile
+	tar -cvf vectores.tar $^
+
+clean : 
 	rm *.o
 
 #
@@ -31,5 +38,7 @@ clean:
 #    <TAB> Compilador Objetos -o (output) vectores(nombre del objetivo actual, también puedes poner $@ en vez del nombre)
 #  Creamos los .o que necesitamos. El .o está formado por los .c y .h necesarios para cada parte, por ejemplo para el mainVector.o necesitamos el mainVector.c
 #    y vectorAux.h. <TAB> Compilador Opciones nombredelCqueEjecutamos
+#  Creamos un .tar con el proyecto, para ellos invocamos los SOURCES y los HEADERS y ponemos makefile
 #  Función clean, no es necesaria, se usa para eliminar los .o creados, debes de ser tu al ejecutar el make el que lo especifique: make clean
-#
+#  Para ejecutar el make con el .tar y el clean debemos poner make all, porque hemos realizado un alias llamado all en el que hemos metido todo lo que queremos
+#    ejecutar a la vez
